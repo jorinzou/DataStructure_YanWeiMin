@@ -46,12 +46,11 @@ int ListDeleteSq(SqList *l , int i , ElemType *e)
 
 	ElemType *p = &(l->elem[i-1]);
 	*e = *p;
-	ElemType *q = p+1;
-
 	for (p; p < &(l->elem[l->length-1]); p++) {
 		*p = *(p+1);
 	}
 	*p = 0;
+	l->length--;
 	return OK;
 }
 
