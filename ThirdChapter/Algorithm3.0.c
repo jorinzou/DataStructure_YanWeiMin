@@ -10,14 +10,11 @@
 
 #define DEBUG_INFO(fmt, args...) printf("\033[33m[%s:%s:%d]\033[0m "#fmt"\r\n", __FILE__,__FUNCTION__, __LINE__, ##args)
 
-/*栈初始大小*/
-#define STACK_INIT_SIZE 4 
-/*栈扩展大小*/
+#define STACK_INIT_SIZE 4
 #define STACK_INCREMENT 4
 
 typedef int SElemType;
 
-/*栈数据结构*/
 typedef struct {
 	SElemType *base;
 	SElemType *top;
@@ -73,7 +70,6 @@ int PopStack(SqStack *s,SElemType *e)
 	return 0;
 }
 
-/*获取栈顶元素*/
 int GetTop(SqStack *s,SElemType *e)
 {
 	if(s->top == s->base)
