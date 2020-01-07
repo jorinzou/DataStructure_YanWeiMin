@@ -1,5 +1,5 @@
 /*
- *数据结构栈的各种操作
+ *栈的顺序实现
  * 
  */
 
@@ -79,8 +79,8 @@ void print_stack(struct stack *s)
 	if (s == NULL)
 		return;
 
-	int i = 0;
-	for(i; i < s->len; ++i){
+	int i = s->pos-1;
+	for(i; i >= 0; --i){
 		printf("elem=%d\n",s->arr[i]);
 	}
 }
@@ -95,14 +95,15 @@ int main(void)
 	if (!stack_full(s)){
 			int i = 0;
 			for(i=0; i < s->len; ++i){
-				push_stack(s,i+1000);
+				push_stack(s,i+1);
 			}
 	}
 
 	print_stack(s);
-	ELEM_TYPE elem = pop_stack(s);
-	printf("pop elem=%d\n",elem);
+	ELEM_TYPE elem0 = pop_stack(s);
+	ELEM_TYPE elem1 = pop_stack(s);
+	ELEM_TYPE elem2 = pop_stack(s);
+	printf("\n");
 	print_stack(s);
-	destroy_stack(s);
 	return 0;
 }

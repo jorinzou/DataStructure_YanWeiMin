@@ -41,10 +41,9 @@ void push_stack(struct node *new,struct stack *s)
 		s->cnt++;
 		return;
 	}
-	while(p->next){
-		p = p->next;
-	}
-	p->next = new;
+
+	new->next = p;
+	s->top = new;
 	s->cnt++;
 }
 
@@ -84,21 +83,21 @@ int main(void)
 {
 	struct stack s;
 	s.cnt = 1;
-	s.top = create_stack_node(111);
-	int i = 1;
-	for(i; i < 1; ++i){
-		push_stack(create_stack_node(111+i),&s);
+	s.top = create_stack_node(1);
+	int i = 0;
+	for(i; i < 4; ++i){
+		push_stack(create_stack_node(2+i),&s);
 	}
 	traverse_stack(&s);
 	int elem = -1;
-	#if 0
+	#if 1
 	pop_stack(&s,&elem);
 	printf("pop elem=%d\n",elem);
 	traverse_stack(&s);
 	#endif
 
-	get_stack_top(&s,&elem);
-	printf("top elem=%d\n",elem);
+	//get_stack_top(&s,&elem);
+	//printf("top elem=%d\n",elem);
 
 	return 0;
 }
